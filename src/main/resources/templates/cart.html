@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Kütyüshop</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel='stylesheet' href='style.css'>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<header>
+  <nav >
+    <div class="topbar">
+      <a href="/">
+        <img class="topimg" src="logo.png" alt="logo"></a>&nbsp;
+      <a href="/"><img class="topicons" src="user.png" onclick="nyi()" alt="user"></a>&nbsp;
+      <a href="/cart"><img class="topicons" src="cart.png" alt="cart"></a>&nbsp;
+      <a href=""> <img class="topicons" src="loupe.png" alt="search"></a>&nbsp;
+      <label class="topsearch">
+        <input type="text" placeholder="Search..">
+      </label>
+    </div>
+
+    <script>
+      function nyi() {
+        alert("Not yet implemented!");
+      }
+    </script>
+
+    <div class="middlebar">
+      <a class="menu" href="/webshop">Számítástechnika</a>&nbsp;
+      <a class="menu" href="/webshop">Gamer</a>&nbsp;
+      <a class="menu" STYLE="color: gold" href="/webshop">Kütyük</a>
+    </div>
+  </nav>
+</header>
+<body>
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Registration</button>
+<div id="id01" class="modal">
+
+  <form class="modal-content animate" action="#" th:action="@{/login}" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+    </div>
+
+    <div class="container">
+      <label for="email"><b>E-mail</b></label>
+      <input type="text" placeholder="Enter E-mail" th:value="${user.email}" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" th:value="${user.password}" name="password" required>
+
+      <input type="submit" value="Login" class="input_button">
+      <label>
+        <input type="checkbox" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+<div id="id02" class="modal">
+
+  <div class="imgcontainer">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+  </div>
+
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+    </div>
+
+  <div class="container" id="register">
+    <form action="#" th:action="@{/add}" method="post">
+      <label for="uname"><b>Name</b></label>
+      <input type="text" placeholder="Enter Your Name" th:value="${user.name}" name="name" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" th:value="${user.password}" name="password" required>
+
+      <label for="tel"><b>Telefon</b></label>
+      <input type="text" placeholder="Enter Telefon" th:value="${user.telefonszam}" name="telefonszam" required>
+
+      <label for="email"><b>E-mail</b></label>
+      <input type="text" placeholder="Enter Email" name="email" th:value="${user.email}" required>
+
+      <label for="iszam"><b>Irányítószám</b></label>
+      <input type="text" placeholder="Enter Iranyitoszam" name="iranyitoszam" th:value="${user.iranyitoszam}" required>
+
+      <label for="varos"><b>Város</b></label>
+      <input type="text" placeholder="Enter Varos" name="telepules" th:value="${user.telepules}" required>
+
+      <label for="utca"><b>Utca</b></label>
+      <input type="text" placeholder="Enter Utca" name="utca" th:value="${user.utca}" required>
+
+      <label for="hazszam"><b>Házszám</b></label>
+      <input type="text" placeholder="Enter Hazszam" name="hazszam_ajto" th:value="${user.hazszam_ajto}" required>
+
+      <input type="submit" value="Registration" class="input_button">
+    </form>
+  </div>
+</div>
+
+</div>
+
+<script>
+  // Get the modal
+  var modal1 = document.getElementById('id01');
+  var modal2 = document.getElementById('id02');
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal1) {
+      modal1.style.display = "none";
+    }
+    if (event.target == modal2) {
+      modal2.style.display = "none";
+    }
+  }
+</script>
+<div class="homepage">
+<div class="cart">
+    <div class ="item"><img class ="item"src="placeholder.png" alt="logo"><p>Termék 9999Narancs</p></div>
+    <div class ="item"><img class ="item"src="placeholder.png" alt="logo"><p>Termék 9999Narancs</p></div>
+    <div class ="item"><img class ="item"src="placeholder.png" alt="logo"><p>Termék 9999Narancs</p></div>
+    <div class ="item"><img class ="item"src="placeholder.png" alt="logo"><p>Termék 9999Narancs</p></div>
+
+  <button onclick="window.location.href='/payment';">
+    Fizess most!
+  </button>
+
+</div>
+</div>
+<footer>
+  <div class="hirl">
+    <input type="text" placeholder="Enter Email" name="hirlevel" style="width: 100%;height: 40px;"><br>
+    <input type="text" placeholder="Enter Vezeteknev" name="vname" style="width: 100%;height: 40px;"><br>
+    <input type="text" placeholder="Enter Keresztnev" name="kname" style="width: 100%;height: 40px;"><br>
+    <button type="submit" style="width: 100%;">Hírlevél feliratkozás</button>
+  </div>
+  <div class="kapcs">
+    Kapcsolat
+  </div>
+  <div class="jog">
+    Kütyüshop informatikai bolt Zrt. © 2026 - 2026. Minden jog fenntartva. All rights reserved.
+  </div>
+  <div >
+    <div class="left">
+      <table style="float:right">
+        <tbody>
+        <tr>
+          <td style="width: 259.517px;text-align: right;"rowspan="3">Kütyüshop szaküzlet</td>
+          <td style="width: 259.517px;">cím</td>
+        </tr>
+        <tr>
+          <td style="width: 259.517px;">telefon</td>
+        </tr>
+        <tr>
+          <td style="width: 259.517px;">nyitvatartás</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="right">
+      <table style="float:left">
+        <tbody>
+        <tr>
+          <td style="width: 259.517px;">cím</td>
+          <td style="width: 359.517px;text-align:left ;"rowspan="3">Kütyüshop szaküzlet</td>
+        </tr>
+        <tr>
+          <td style="width: 259.517px;">telefon</td>
+        </tr>
+        <tr>
+          <td style="width: 259.517px;" >nyitvatartás</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</footer>
+</body>
+</html>
